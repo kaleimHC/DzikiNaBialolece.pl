@@ -83,6 +83,10 @@ export default defineConfig({
   ],
   server: {
     allowedHosts: ['dzikinabialolece.pl', 'www.dzikinabialolece.pl', 'localhost'],
+    // Public demo runs the dev server; a bot probing a junk path can trip a
+    // transient transform error that vite would broadcast as a full-screen
+    // overlay to every visitor. Log it, don't show it.
+    hmr: { overlay: false },
     proxy: {
       '/api': {
         target: 'http://api:8000',
