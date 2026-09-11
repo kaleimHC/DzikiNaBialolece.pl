@@ -15,7 +15,7 @@ Endpoints:
 
 import logging
 
-from django.db import OperationalError, ProgrammingError, connection
+from django.db import OperationalError, ProgrammingError, connection, transaction
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -275,8 +275,11 @@ def config_activate(request, config_id):
 
     config.is_active = True
     try:
-        config.full_clean()
-        config.save()
+        # save() deactivates the other configs first, then runs full_clean();
+        # calling full_clean() before save() would trip rc_single_active_config
+        # while the previous config is still active.
+        with transaction.atomic():
+            config.save()
     except Exception as e:
         return Response({"error": str(e)}, status=400)
 

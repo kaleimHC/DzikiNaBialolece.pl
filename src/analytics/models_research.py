@@ -16,7 +16,7 @@ import uuid
 
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db import models
+from django.db import models, transaction
 
 
 
@@ -348,13 +348,15 @@ class ResearchConfig(models.Model):
             raise ValidationError(errors)
 
     def save(self, *args, **kwargs):
-        # Singleton-active: deactivate others when activating this one
-        if self.is_active:
-            ResearchConfig.objects.filter(is_active=True).exclude(pk=self.pk).update(
-                is_active=False
-            )
-        self.full_clean()
-        super().save(*args, **kwargs)
+        # Singleton-active: deactivate others when activating this one.
+        # Atomic so a failed full_clean() doesn't leave zero active configs.
+        with transaction.atomic():
+            if self.is_active:
+                ResearchConfig.objects.filter(is_active=True).exclude(pk=self.pk).update(
+                    is_active=False
+                )
+            self.full_clean()
+            super().save(*args, **kwargs)
 
     def to_env_dict(self):
         """
