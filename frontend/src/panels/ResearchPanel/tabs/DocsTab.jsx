@@ -12,7 +12,7 @@ const Code = ({ children }) => (
 );
 
 const Formula = ({ children }) => (
-  <div className="bg-gray-800/50 rounded p-2 my-2 font-mono text-blue-300 text-sm">
+  <div className="bg-slate-800/50 rounded p-2 my-2 font-mono text-blue-300 text-sm">
     {children}
   </div>
 );
@@ -23,7 +23,7 @@ const Tag = ({ children, color = "blue" }) => {
     green: "bg-green-900/40 text-green-300 border-green-700",
     yellow: "bg-yellow-900/40 text-yellow-300 border-yellow-700",
     purple: "bg-purple-900/40 text-purple-300 border-purple-700",
-    gray: "bg-gray-800/60 text-gray-400 border-gray-600",
+    gray: "bg-slate-800/60 text-gray-400 border-gray-600",
   };
   return (
     <span
@@ -114,7 +114,7 @@ const PipelineOverview = () => (
               "WebSocket pipeline_complete + mapa ryzyka",
             ],
           ].map(([n, name, script, output]) => (
-            <tr key={n} className="hover:bg-gray-800/30">
+            <tr key={n} className="hover:bg-slate-800/30">
               <td className="py-2 pr-3 font-mono text-gray-600">{n}</td>
               <td className="py-2 pr-3 font-semibold text-white">{name}</td>
               <td className="py-2 pr-3 font-mono text-green-400">{script}</td>

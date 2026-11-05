@@ -429,9 +429,9 @@ body.ui-hidden .maplibregl-ctrl-top-right {
     box-shadow: 0 0 10px rgb(var(--color-layer-wmatrix) / 0.25);
   }
   .btn-on-research {
-    background-color: rgb(var(--color-layer-research));
+    background-color: rgb(var(--color-gray-700) / 0.9);
     color: #fff;
-    border: 1px solid rgb(var(--color-layer-research));
+    border: 1px solid rgb(var(--color-gray-600) / 0.8);
   }
 
   .btn-off {

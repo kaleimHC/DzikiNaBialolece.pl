@@ -34,7 +34,7 @@ function StepRow({ step, isExpanded, onToggle, isLast }) {
         transition={{ duration: 0.2 }}
         onClick={() => hasOutput && onToggle()}
         className={`w-full flex items-center gap-2 text-sm py-1.5 px-1 rounded transition-colors ${
-          hasOutput ? "hover:bg-gray-800/50 cursor-pointer" : "cursor-default"
+          hasOutput ? "hover:bg-slate-800/50 cursor-pointer" : "cursor-default"
         }`}
       >
         {/* Step number */}
@@ -151,7 +151,7 @@ export default function LiveStepsProgress({ progress }) {
   const runningStep = steps.find((s) => s.status === "running");
 
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
+    <div className="bg-slate-900/50 rounded-lg ring-1 ring-inset ring-white/5 overflow-hidden">
       {/* Header with connection status */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-gray-800">
         <span className="text-xs font-medium text-gray-300">
@@ -201,7 +201,7 @@ export default function LiveStepsProgress({ progress }) {
               {completedCount}/{totalSteps}
             </span>
           </div>
-          <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-1.5 bg-slate-800/60 rounded-full overflow-hidden">
             <motion.div
               className={`h-full ${
                 status === "failed"

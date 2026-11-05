@@ -54,7 +54,7 @@ function SimpleView({ diagnostics, configSnapshot }) {
   return (
     <div className="space-y-3">
       <div className="text-xs">
-        <span className="bg-gray-800 px-2 py-1 rounded text-gray-300">
+        <span className="bg-slate-800/60 px-2 py-1 rounded text-gray-300">
           Model:{" "}
           <span className="text-white font-medium">
             {model.selected?.toUpperCase() || "?"}
@@ -63,10 +63,10 @@ function SimpleView({ diagnostics, configSnapshot }) {
       </div>
 
       {sorted.length > 0 ? (
-        <div className="bg-gray-800 rounded-lg overflow-hidden">
+        <div className="bg-slate-800/60 rounded-lg overflow-hidden">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-gray-700 bg-gray-800/80">
+              <tr className="border-b border-gray-700 bg-slate-800/80">
                 <th className="text-left px-3 py-2 text-gray-400 font-medium">
                   Czynnik
                 </th>
@@ -129,13 +129,13 @@ function SimpleView({ diagnostics, configSnapshot }) {
           </table>
         </div>
       ) : (
-        <div className="text-gray-500 text-sm p-3 bg-gray-800 rounded-lg">
+        <div className="text-gray-500 text-sm p-3 bg-slate-800/60 rounded-lg">
           Brak danych o czynnikach ryzyka.
         </div>
       )}
 
       {isVoronoi && diagnostics?.eta?.h_rel != null ? (
-        <div className="flex items-center gap-2 text-xs bg-gray-800 rounded-lg p-2">
+        <div className="flex items-center gap-2 text-xs bg-slate-800/60 rounded-lg p-2">
           <span className="text-gray-400">Skupienie punktów:</span>
           <span
             className={`font-medium ${
@@ -158,7 +158,7 @@ function SimpleView({ diagnostics, configSnapshot }) {
         </div>
       ) : (
         !isVoronoi && (
-          <div className="flex items-center gap-2 text-xs bg-gray-800/50 rounded-lg p-2 opacity-50">
+          <div className="flex items-center gap-2 text-xs bg-slate-800/50 rounded-lg p-2 opacity-50">
             <span className="text-gray-500">Skupienie punktów:</span>
             <span className="text-gray-500 italic">n/d (tylko Voronoi)</span>
           </div>
@@ -182,7 +182,7 @@ function FullDebugView({ diagnostics, steps, configSnapshot }) {
 
   return (
     <div className="space-y-3">
-      <div className="bg-gray-800 p-3 rounded text-xs">
+      <div className="bg-slate-800/60 p-3 rounded text-xs">
         <h4 className="font-medium text-gray-300 mb-2">Debug info</h4>
         <ul className="space-y-1 text-gray-400">
           <li>LISA HH: {diagnostics?.lisa?.hh ?? "brak danych"}</li>
@@ -200,7 +200,7 @@ function FullDebugView({ diagnostics, steps, configSnapshot }) {
         </ul>
       </div>
 
-      <div className="bg-gray-800 p-3 rounded text-xs">
+      <div className="bg-slate-800/60 p-3 rounded text-xs">
         <h4 className="font-medium text-gray-300 mb-2">Macierz W</h4>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-gray-400">
           <span>Metoda:</span>
@@ -222,8 +222,8 @@ function FullDebugView({ diagnostics, steps, configSnapshot }) {
       </div>
 
       {steps && steps.length > 0 && (
-        <div className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden">
-          <div className="px-3 py-2 border-b border-gray-700 bg-gray-800">
+        <div className="bg-slate-800/50 rounded-lg ring-1 ring-inset ring-white/10 overflow-hidden">
+          <div className="px-3 py-2 border-b border-gray-700 bg-slate-800/60">
             <h4 className="text-xs font-medium text-gray-300">
               Pipeline Steps ({steps.length})
             </h4>
@@ -344,7 +344,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
   };
 
   return (
-    <div className="space-y-3 p-3 bg-gray-900/50 rounded-lg">
+    <div className="space-y-3 p-3 bg-slate-900/50 rounded-lg">
       <div className="flex border-b border-gray-700 mb-2">
         {[
           { id: "simple", label: "Ogólny", desc: "dla wszystkich" },
@@ -377,19 +377,19 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
               Model
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="bg-gray-800 rounded p-2">
+              <div className="bg-slate-800/60 rounded p-2">
                 <span className="text-gray-500">Typ:</span>{" "}
                 <span className="text-white font-mono">
                   {model?.selected?.toUpperCase() || "-"}
                 </span>
               </div>
-              <div className="bg-gray-800 rounded p-2">
+              <div className="bg-slate-800/60 rounded p-2">
                 <span className="text-gray-500">AIC:</span>{" "}
                 <span className="text-white font-mono">
                   {model?.aic?.toFixed(2) || "-"}
                 </span>
               </div>
-              <div className="bg-gray-800 rounded p-2">
+              <div className="bg-slate-800/60 rounded p-2">
                 <span className="text-gray-500">Pseudo R²:</span>{" "}
                 <span className="text-white font-mono">
                   {model?.r_squared != null
@@ -397,7 +397,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                     : "-"}
                 </span>
               </div>
-              <div className="bg-gray-800 rounded p-2">
+              <div className="bg-slate-800/60 rounded p-2">
                 <span className="text-gray-500">
                   {model?.selected === "sem" ? "λ (SEM):" : "ρ (SAR):"}
                 </span>{" "}
@@ -421,7 +421,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                 <h4 className="text-xs font-semibold text-gray-400 uppercase mb-2">
                   Współczynniki
                 </h4>
-                <div className="bg-gray-800 rounded overflow-hidden">
+                <div className="bg-slate-800/60 rounded overflow-hidden">
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="border-b border-gray-700">
@@ -493,7 +493,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                       className={`px-2 py-0.5 rounded text-xs font-mono ${
                         isHigh
                           ? "bg-red-900/40 text-red-400 border border-red-700/50"
-                          : "bg-gray-800 text-gray-400"
+                          : "bg-slate-800/60 text-gray-400"
                       }`}
                     >
                       {name}: {val?.toFixed(2) || "NA"}
@@ -520,19 +520,19 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                 Moran's I (residua)
               </h4>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">I:</span>{" "}
                   <span className="text-white font-mono">
                     {moran.i?.toFixed(4)}
                   </span>
                 </div>
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">z:</span>{" "}
                   <span className="text-white font-mono">
                     {moran.z?.toFixed(2)}
                   </span>
                 </div>
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">p:</span>{" "}
                   <span
                     className={`font-mono ${moran.p < 0.05 ? "text-red-400" : "text-green-400"}`}
@@ -558,7 +558,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                 <h4 className="text-xs font-semibold text-gray-400 uppercase mb-2">
                   Testy LM
                 </h4>
-                <div className="bg-gray-800 rounded overflow-hidden">
+                <div className="bg-slate-800/60 rounded overflow-hidden">
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="border-b border-gray-700">
@@ -616,7 +616,7 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                     LeSage & Pace 2009
                   </span>
                 </h4>
-                <div className="bg-gray-800 rounded overflow-hidden">
+                <div className="bg-slate-800/60 rounded overflow-hidden">
                   <table className="w-full text-xs">
                     <thead>
                       <tr className="border-b border-gray-700">
@@ -703,19 +703,19 @@ export default function DiagnosticsReport({ diagnostics, configSnapshot, steps }
                 ETA (Aglomeracja)
               </h4>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">H emp:</span>{" "}
                   <span className="text-white font-mono">
                     {diagnostics.eta.h_emp?.toFixed(4)}
                   </span>
                 </div>
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">H max:</span>{" "}
                   <span className="text-white font-mono">
                     {diagnostics.eta.h_max?.toFixed(4)}
                   </span>
                 </div>
-                <div className="bg-gray-800 rounded p-2">
+                <div className="bg-slate-800/60 rounded p-2">
                   <span className="text-gray-500">ETA:</span>{" "}
                   <span
                     className={`font-mono font-medium ${

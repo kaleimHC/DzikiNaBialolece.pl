@@ -14,7 +14,7 @@ export default function RunStepsList({ run }) {
   const statusColor = STATUS_COLOR;
 
   return (
-    <div className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden">
+    <div className="bg-slate-800/50 rounded-lg ring-1 ring-inset ring-white/10 overflow-hidden">
       <div className="flex items-center justify-between px-3 py-2 border-b border-gray-700">
         <div className="flex items-center gap-2">
           <StatusBadge status={run.status} />

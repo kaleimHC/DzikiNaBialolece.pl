@@ -38,19 +38,33 @@ export default function MapContainer() {
   } = useSightingsStore();
   const currentTheme = useSightingsStore((s) => s.currentTheme);
 
+  // Spójna reguła: gdy włączona jest JAKAKOLWIEK warstwa OSM, oba heatmapy
+  // (ryzyko + populacja) chowają się tak samo. Pojedyncze źródło prawdy, żeby
+  // nie trzymać tych dwóch warstw w dwóch różnych, rozjechanych mechanizmach.
+  const OSM_LAYER_KEYS = [
+    "forests", "scrub", "meadows", "parks", "water", "waterways",
+    "farmland", "allotments", "buildings", "barriers", "roads", "railway",
+  ];
+  const anyOsmActive = OSM_LAYER_KEYS.some((k) => visibleLayers?.[k]);
+
+  // Populacja gaśnie razem z ryzykiem, gdy OSM aktywne
+  const gatedVisibleLayers = anyOsmActive
+    ? { ...visibleLayers, population: false }
+    : visibleLayers;
+
   // Grid transition (crossfade animation FAST <-> PUB <-> RESEARCH)
   useGridTransition(
     mapRef,
     mapReady,
     displayMode,
     showFastGrid,
-    showHeatmap,
+    showHeatmap && !anyOsmActive,
     showResearchGrid,
     researchGeometry,
   );
 
   // OSM layer transition (fade in/out animation)
-  useOsmLayerTransition(mapRef, mapReady, visibleLayers);
+  useOsmLayerTransition(mapRef, mapReady, gatedVisibleLayers);
 
   const updateCircleSizes = useCallback((map, n, zoom) => {
     if (!map || n === 0) return;

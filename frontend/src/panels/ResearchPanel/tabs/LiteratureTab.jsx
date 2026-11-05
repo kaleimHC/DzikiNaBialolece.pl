@@ -52,7 +52,7 @@ const Rejected = ({ children }) => (
 );
 
 const InCode = ({ children }) => (
-  <div className="mt-2 p-3 bg-gray-800/60 border border-gray-700/40 rounded">
+  <div className="mt-2 p-3 bg-slate-800/60 ring-1 ring-inset ring-white/10 rounded">
     <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">
       → Gdzie w kodzie
     </p>
@@ -75,7 +75,7 @@ const EntryCard = ({
   rejected,
   inCode,
 }) => (
-  <div className="mb-6 p-5 bg-gray-800/40 border border-gray-700/50 rounded-lg">
+  <div className="mb-6 p-5 bg-slate-800/40 ring-1 ring-inset ring-white/10 rounded-lg">
     <div className="flex items-center gap-2 mb-2">
       <TypeBadge type={type} />
       {year && <span className="text-xs text-gray-500">{year}</span>}
@@ -333,7 +333,7 @@ const LiteratureTab = () => {
           </button>
         ))}
 
-        <div className="mt-6 p-3 bg-gray-800/50 rounded border border-gray-700/50">
+        <div className="mt-6 p-3 bg-slate-800/50 rounded ring-1 ring-inset ring-white/10">
           <p className="text-xs text-gray-500 leading-relaxed">
             Każda pozycja: co zaadaptowaliśmy, co odrzuciliśmy i dlaczego, gdzie
             w kodzie.

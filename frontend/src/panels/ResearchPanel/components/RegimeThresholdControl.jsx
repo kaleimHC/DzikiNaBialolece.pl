@@ -92,7 +92,7 @@ function ResultRow({ label, count, total, color }) {
       <span className="w-12 text-right tabular-nums text-gray-300">
         {count?.toLocaleString("pl-PL") || 0}
       </span>
-      <div className="flex-1 h-1.5 bg-gray-800 rounded-sm overflow-hidden">
+      <div className="flex-1 h-1.5 bg-slate-800/60 rounded-sm overflow-hidden">
         <div
           className={`h-full transition-all duration-200 ${colors.bar}`}
           style={{ width: `${percent}%` }}

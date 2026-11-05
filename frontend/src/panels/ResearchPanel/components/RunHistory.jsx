@@ -25,8 +25,8 @@ export default function RunHistory({ runs, onSelectRun, selectedRunId, selectedR
             onClick={() => onSelectRun(r.id)}
             className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
               selectedRunId === r.id
-                ? "bg-gray-700 border border-gray-600 rounded-b-none"
-                : "bg-gray-800/30 border border-transparent hover:bg-gray-800/60"
+                ? "bg-gray-700 ring-1 ring-inset ring-white/15 rounded-b-none"
+                : "bg-slate-800/30 border border-transparent hover:bg-slate-800/60"
             }`}
           >
             <StatusBadge status={r.status} />
@@ -53,7 +53,7 @@ export default function RunHistory({ runs, onSelectRun, selectedRunId, selectedR
                 transition={{ duration: 0.2 }}
                 className="overflow-hidden"
               >
-                <div className="border border-t-0 border-gray-600 rounded-b-lg bg-gray-800/30">
+                <div className="border border-t-0 border-gray-600 rounded-b-lg bg-slate-800/30">
                   <ExpandedRunTabs run={selectedRunDetail} />
                 </div>
               </motion.div>

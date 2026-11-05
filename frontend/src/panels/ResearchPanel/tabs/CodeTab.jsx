@@ -321,7 +321,7 @@ y_sql <- switch(y_formula,
 # → UPDATE $TARGET_TABLE SET y_<formula> = <y_sql>, spatial_risk = ...`}</Code>
     </div>
 
-    <div className="bg-gray-800/40 rounded p-3 text-xs text-gray-400">
+    <div className="bg-slate-800/40 rounded p-3 text-xs text-gray-400">
       <strong className="text-white">Dlaczego SQL zamiast R?</strong> Dane są w
       PostgreSQL. Obliczenie Y w SQL = zero transferu danych do R, zero
       wektoryzacji w R. UPDATE per komórka na poziomie bazy - szybsze i
